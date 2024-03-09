@@ -2,13 +2,24 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
+/**
+ * A dialog window for searching books.
+ */
 public class SEARCH extends JDialog {
     private JTextField textField1;
     private JTable table1;
-    private JLabel ENTERIDLabel;
+    private JLabel ENTERBOOKTITLELabel;
     private JButton SEARCHButton;
     private JPanel panel1;
-    public SEARCH (JFrame parent) {
+    private JTextField textField2;
+    private JLabel ENTERBOOKAUTHORLabel;
+
+    /**
+     * Constructs a new SEARCH dialog.
+     *
+     * @param parent The parent JFrame to which this dialog belongs.
+     */
+    public SEARCH(JFrame parent) {
         super(parent);
         setTitle("Search Books");
         setContentPane(panel1);
@@ -19,31 +30,25 @@ public class SEARCH extends JDialog {
         initializeTable();
         // ActionListener for SEARCHButton
         SEARCHButton.addActionListener(e -> {
-            if(textField1.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null, "Please enter the book ID");
+            if (textField1.getText().isEmpty() && textField2.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter the book title or author");
                 return;
             }
-            //checking if the book id is valid
-            try{
-            int bookId = Integer.parseInt(textField1.getText());
+            // Creating a library instance to search for books
             LIBRARY library = new LIBRARY();
-            boolean success = library.searchBooks(bookId, table1);
-            if (success) {
-                DefaultTableModel model = (DefaultTableModel) table1.getModel();
-                model.setRowCount(0);
-                library.searchBooks(bookId, table1);
-            } else {
-                JOptionPane.showMessageDialog(null, "NOT AVAILABLE");
-            }
-            }
-            catch (NumberFormatException ex){
-                JOptionPane.showMessageDialog(null, "Please enter a valid book ID");
-            }
-
+            String title = textField1.getText();
+            String author = textField2.getText();
+            // Getting the list of books based on the search criteria
+            DefaultTableModel model = (DefaultTableModel) table1.getModel();
+            model.setRowCount(0); // Clear the table
+            library.searchBooks(title, author, table1);
         });
 
     }
-    // Initialize the table with column names
+
+    /**
+     * Initializes the table with column names.
+     */
     private void initializeTable() {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
@@ -53,7 +58,6 @@ public class SEARCH extends JDialog {
         model.addColumn("Availability");
 
         table1.setModel(model); // Set the table model
-
     }
 
 }

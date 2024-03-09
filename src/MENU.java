@@ -1,10 +1,15 @@
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 
 
-// Class representing the menu of the library application
+/**
+ * A dialog window representing the menu of the library application.
+ */
 public class MENU extends JDialog {
     // Components for the user interface
     private JButton BOOKSAVAILABLEButton; // Button to display available books
@@ -16,7 +21,12 @@ public class MENU extends JDialog {
     private JButton ADDUSERButton; // Button to add users
     private JFrame frame; // Reference to the parent frame
 
-    // Constructor for the MENU dialog
+
+    /**
+     * Constructs a new MENU dialog.
+     *
+     * @param parent The parent JFrame to which this dialog belongs.
+     */
     public MENU(JFrame parent) {
         super(parent);
         setTitle("Library Menu");
@@ -89,4 +99,5 @@ public class MENU extends JDialog {
         // Making the dialog visible
         setVisible(true);
     }
+
 }

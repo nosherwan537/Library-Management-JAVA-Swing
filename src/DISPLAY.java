@@ -1,13 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Locale;
+import javax.swing.plaf.FontUIResource;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.StyleContext;
 
-// Class representing the dialog to display available books
+/**
+ * A dialog window for displaying available books.
+ */
 public class DISPLAY extends JDialog {
     private JPanel panel1;
     private JTable table1;
 
-    // Constructor for DISPLAY dialog
+
+    /**
+     * Constructs a new DISPLAY dialog.
+     *
+     * @param parent The parent JFrame to which this dialog belongs.
+     */
     public DISPLAY(JFrame parent) {
         super(parent);
         setTitle("Available Books");
@@ -19,7 +29,9 @@ public class DISPLAY extends JDialog {
         initializeTable(); // Initialize the table to display available books
     }
 
-    // Method to initialize the table to display available books
+    /**
+     * Initializes the table to display available books.
+     */
     private void initializeTable() {
         // Create a table model with appropriate column headers
         DefaultTableModel model = new DefaultTableModel();
@@ -36,4 +48,5 @@ public class DISPLAY extends JDialog {
         LIBRARY library = new LIBRARY();
         library.displayBooks(table1);
     }
+
 }

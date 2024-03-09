@@ -1,15 +1,22 @@
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 
+/**
+ * A dialog window for registering as a member of the library.
+ */
 
 public class UserInfo extends JDialog {
     // Variables to store user information
-    int userId;
-    String name;
-    String contact;
-    BOOK borrowed; // Assuming BOOK class is defined elsewhere
+    // books borrowed by user are stored in database
+    int userId; //userId
+    String name; //name
+    String contact; //contact
+
 
     // Components for the user interface
     private JTextField tfName;
@@ -21,7 +28,12 @@ public class UserInfo extends JDialog {
     private JPanel register;
     private JButton cancelButton;
 
-    // Constructor for UserInfo dialog
+
+    /**
+     * Constructs a new UserInfo dialog.
+     *
+     * @param parent The parent JFrame to which this dialog belongs.
+     */
     public UserInfo(JFrame parent) {
         super(parent);
         setTitle("Become member of library ");
@@ -71,4 +83,5 @@ public class UserInfo extends JDialog {
             }
         });
     }
+
 }

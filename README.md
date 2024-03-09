@@ -26,9 +26,9 @@ Set up the database:
 
 1) Create a MySQL database named library.
 
-2) Run the SQL script library_file.sql provided in the DATABASE folder to create the necessary tables.
+2) Run the SQL script library_file.sql provided in the repository to create the necessary tables.
 
-3) Open the project in your preferred Java IDE (e.g., IntelliJ IDEA, Eclipse).
+3) Open the project in your IntelliJ IDEA IDE preferably to avoid compatibility issue of SWING GUI Designer.
 
 Update the database connection details in the LIBRARY.java file:
 

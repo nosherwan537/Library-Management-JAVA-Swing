@@ -1,6 +1,12 @@
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 import java.awt.*;
+import java.util.Locale;
 
+/**
+ * A dialog window for adding a book to the library.
+ */
 public class BOOK extends JDialog {
     // Instance variables to store book information
     private long bookId;
@@ -20,7 +26,11 @@ public class BOOK extends JDialog {
     private JLabel idt; // Label for book ID
     private JLabel authort; // Label for author
 
-    // Constructor for the BOOK dialog
+    /**
+     * Constructs a new BOOK dialog.
+     *
+     * @param parent The parent JFrame to which this dialog belongs.
+     */
     public BOOK(JFrame parent) {
         super(parent);
         setTitle("Add Book");
@@ -65,4 +75,5 @@ public class BOOK extends JDialog {
         });
 
     }
+
 }
