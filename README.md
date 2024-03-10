@@ -56,5 +56,7 @@ Graphical User Interface
 
 The project provides a user-friendly graphical interface built using Java Swing for easy navigation and interaction with the library system.
 
+You can check out word file named OOP ASSIGNMENT 1.docx for screenshots and database setup guiding screenshots.
+
 Developed by:
 Nosherwan Tahir
