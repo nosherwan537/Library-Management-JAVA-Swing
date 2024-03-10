@@ -20,12 +20,9 @@ public class LIBRARY {
      */
     public boolean addUsers(String name, String contact, int id) {
         boolean success = false;
-        final String DB_URL = "jdbc:mysql://localhost:3306/library";
-        final String USERNAME = "root";
-        final String PASSWORD = "sq@nosho789";
         try {
             // Establishing connection to the database
-            Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+            Connection connection = DriverManager.getConnection(DBProperties.getURL(), DBProperties.getUser(), DBProperties.getPassword());
             String sql = "INSERT INTO user_info (id, name, contact) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
@@ -51,11 +48,8 @@ public class LIBRARY {
      */
     public boolean addBooks(int id, String bookName, String author, String genre) {
         boolean success = false;
-        final String DB_URL = "jdbc:mysql://localhost:3306/library";
-        final String USERNAME = "root";
-        final String PASSWORD = "sq@nosho789";
 
-        try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
+        try (Connection connection = DriverManager.getConnection(DBProperties.getURL(), DBProperties.getUser(), DBProperties.getPassword())) {
             String sql = "INSERT INTO books (id, title, author, genre, availability_status) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setInt(1, id);
@@ -82,10 +76,7 @@ public class LIBRARY {
     public void displayBooks(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // Clear existing rows
-        final String DB_URL = "jdbc:mysql://localhost:3306/library";
-        final String USERNAME = "root";
-        final String PASSWORD = "sq@nosho789";
-        try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
+        try (Connection connection = DriverManager.getConnection(DBProperties.getURL(), DBProperties.getUser(), DBProperties.getPassword())) {
             String sql = "SELECT * FROM books WHERE availability_status = true";
             try (Statement statement = connection.createStatement()) {
                 try (ResultSet resultSet = statement.executeQuery(sql)) {
@@ -116,10 +107,7 @@ public class LIBRARY {
     public void displayBorrowedBooks(int userId, JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // Clear existing rows
-        final String DB_URL = "jdbc:mysql://localhost:3306/library";
-        final String USERNAME = "root";
-        final String PASSWORD = "sq@nosho789";
-        try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
+        try (Connection connection = DriverManager.getConnection(DBProperties.getURL(), DBProperties.getUser(), DBProperties.getPassword())) {
             String sql = "SELECT * FROM borrowed_books WHERE user_id = ?"; // Select data from borrowed_books table
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -197,11 +185,7 @@ public class LIBRARY {
      */
     public boolean checkoutBooks(int bookId, int userId){
         boolean success = false;
-        final String DB_URL = "jdbc:mysql://localhost:3306/library";
-        final String USERNAME = "root";
-        final String PASSWORD = "sq@nosho789";
-
-        try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
+        try (Connection connection = DriverManager.getConnection(DBProperties.getURL(), DBProperties.getUser(), DBProperties.getPassword())) {
             // Begin transaction
             connection.setAutoCommit(false);
 
@@ -248,11 +232,8 @@ public class LIBRARY {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // Clear existing rows
         boolean success = false;
-        final String DB_URL = "jdbc:mysql://localhost:3306/library";
-        final String USERNAME = "root";
-        final String PASSWORD = "sq@nosho789";
 
-        try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
+        try (Connection connection = DriverManager.getConnection(DBProperties.getURL(), DBProperties.getUser(), DBProperties.getPassword())) {
             String sql = "SELECT * FROM books WHERE title = ? OR author= ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, title);
@@ -286,11 +267,8 @@ public class LIBRARY {
      */
     public boolean returnBooks(int bookId, int userId) {
         boolean success = false;
-        final String DB_URL = "jdbc:mysql://localhost:3306/library";
-        final String USERNAME = "root";
-        final String PASSWORD = "sq@nosho789";
 
-        try (Connection connection = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD)) {
+        try (Connection connection = DriverManager.getConnection(DBProperties.getURL(), DBProperties.getUser(), DBProperties.getPassword())) {
             // Delete the entry from the borrowed_books table
             String deleteSql = "DELETE FROM borrowed_books WHERE book_id = ? AND user_id = ?";
             try (PreparedStatement deleteStatement = connection.prepareStatement(deleteSql)) {

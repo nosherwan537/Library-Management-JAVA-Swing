@@ -34,11 +34,10 @@ Set up the database:
 
 Update the database connection details in the LIBRARY.java file:
 
-Copy code
-
-`final String DB_URL = "jdbc:mysql://localhost:3306/library";
-final String USERNAME = "root";
-final String PASSWORD = "sq@nosho789";`
+Make a file named database.properties in the project directory outside src and add the following lines to it:
+db.url= your database url (e.g. jdbc:mysql://localhost:3306/library)
+db.user= your database username
+db.password= your database password
 
 Build and run the project.
 
