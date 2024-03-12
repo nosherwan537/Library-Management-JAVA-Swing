@@ -1,9 +1,8 @@
+//File: DISPLAY.java
 import javax.swing.*;
 import java.awt.*;
-import java.util.Locale;
-import javax.swing.plaf.FontUIResource;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.StyleContext;
+
 
 /**
  * A dialog window for displaying available books.

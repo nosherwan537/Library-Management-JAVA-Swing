@@ -1,10 +1,8 @@
+//file name: UserInfo.java
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Locale;
 
 /**
  * A dialog window for registering as a member of the library.
